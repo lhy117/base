@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hl.base.service.dao.CodeGenerateDao">
+
+	<select id="listTable" resultType="String">
+		select CONCAT(table_name,'-',table_comment) from information_schema.tables 
+			where table_type = 'BASE TABLE' and table_schema = (select database());
+	</select>
+	
+</mapper>

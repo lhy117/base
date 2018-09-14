@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hl.base.service.dao.SysOrgDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hl.base.facade.model.SysOrg">
+    <result column="id" property="id" />
+    <result column="create_user" property="createUser" />
+    <result column="create_time" property="createTime" />
+    <result column="update_user" property="updateUser" />
+    <result column="update_time" property="updateTime" />
+    <result column="status" property="status" />
+        <result column="org_name" property="orgName" />
+        <result column="org_code" property="orgCode" />
+        <result column="org_type" property="orgType" />
+        <result column="region_id" property="regionId" />
+        <result column="parent_id" property="parentId" />
+        <result column="license" property="license" />
+        <result column="org_addr" property="orgAddr" />
+        <result column="xcoordition" property="xcoordition" />
+        <result column="ycoordition" property="ycoordition" />
+        <result column="telephone1" property="telephone1" />
+        <result column="telephone2" property="telephone2" />
+        <result column="introduce" property="introduce" />
+        <result column="station_type" property="stationType" />
+        <result column="station_mac" property="stationMac" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_user,
+        create_time,
+        update_user,
+        update_time,
+        status,
+        org_name, org_code, org_type, region_id, parent_id, license, org_addr, xcoordition, ycoordition, telephone1, telephone2, introduce, station_type, station_mac, remark
+    </sql>
+
+</mapper>

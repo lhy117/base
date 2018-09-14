@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hl.base.service.dao.SysDicDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hl.base.facade.model.SysDic">
+    <result column="id" property="id" />
+    <result column="update_time" property="updateTime" />
+        <result column="code" property="code" />
+        <result column="name" property="name" />
+        <result column="del_flag" property="delFlag" />
+        <result column="dic_type" property="dicType" />
+        <result column="remarks" property="remarks" />
+        <result column="pinyin" property="pinyin" />
+        <result column="mnemonic_code" property="mnemonicCode" />
+        <result column="parent_code" property="parentCode" />
+        <result column="english_name" property="englishName" />
+        <result column="name_or_code" property="nameOrCode" />
+        <result column="five_stroke_mnemonic_code" property="fiveStrokeMnemonicCode" />
+        <result column="unit" property="unit" />
+        <result column="flag" property="flag" />
+        <result column="simplified_chinese" property="simplifiedChinese" />
+        <result column="char2_code" property="char2Code" />
+        <result column="char3_code" property="char3Code" />
+        <result column="number_code" property="numberCode" />
+        <result column="insert_operator" property="insertOperator" />
+        <result column="insert_datetime" property="insertDatetime" />
+        <result column="last_modify_operator" property="lastModifyOperator" />
+        <result column="last_modify_datetime" property="lastModifyDatetime" />
+        <result column="is_apply_phemr" property="isApplyPhemr" />
+        <result column="is_common" property="isCommon" />
+        <result column="type" property="type" />
+        <result column="specifications" property="specifications" />
+        <result column="unit_price" property="unitPrice" />
+        <result column="is_reimbursement" property="isReimbursement" />
+        <result column="is_common_use" property="isCommonUse" />
+        <result column="apply_disease" property="applyDisease" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        update_time,
+        code, name, del_flag, dic_type, remarks, pinyin, mnemonic_code, parent_code, english_name, name_or_code, five_stroke_mnemonic_code, unit, flag, simplified_chinese, char2_code, char3_code, number_code, insert_operator, insert_datetime, last_modify_operator, last_modify_datetime, is_apply_phemr, is_common, type, specifications, unit_price, is_reimbursement, is_common_use, apply_disease, sort
+    </sql>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hl.base.service.dao.SysRoleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hl.base.facade.model.SysRole">
+    <result column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="english_name" property="englishName" />
+        <result column="system_id" property="systemId" />
+        <result column="role_type" property="roleType" />
+        <result column="is_system_data" property="isSystemData" />
+        <result column="is_usable" property="isUsable" />
+        <result column="del_flag" property="delFlag" />
+        <result column="data_range" property="dataRange" />
+        <result column="memo" property="memo" />
+        <result column="insert_operator" property="insertOperator" />
+        <result column="insert_datetime" property="insertDatetime" />
+        <result column="last_modify_operator" property="lastModifyOperator" />
+        <result column="last_modify_datetime" property="lastModifyDatetime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        name, english_name, system_id, role_type, is_system_data, is_usable, del_flag, data_range, memo, insert_operator, insert_datetime, last_modify_operator, last_modify_datetime
+    </sql>
+
+</mapper>
