@@ -14,12 +14,7 @@
 	<dependencies>
 		<dependency>
 		    <groupId>com.hl.base</groupId>
-		    <artifactId>base-facade</artifactId>
-		    <version>0.0.1</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.hl.base</groupId>
-		    <artifactId>base-util</artifactId>
+		    <artifactId>base-auth</artifactId>
 		    <version>0.0.1</version>
 		</dependency>
 		<dependency>
@@ -88,6 +83,14 @@
 			<groupId>cn.afterturn</groupId>
 			<artifactId>easypoi-base</artifactId>
 		</dependency>
+		<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
 	</dependencies>
 
 	<build>

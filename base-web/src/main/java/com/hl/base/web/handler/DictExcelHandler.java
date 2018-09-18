@@ -18,6 +18,10 @@ import com.hl.base.facade.model.SysDic;
 import cn.afterturn.easypoi.handler.inter.IExcelDictHandler;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * easypoi导入导出字典数据处理类
+ * @author lhy
+ */
 @Component
 @Slf4j
 public class DictExcelHandler implements IExcelDictHandler {
@@ -26,7 +30,7 @@ public class DictExcelHandler implements IExcelDictHandler {
 	private RedisTemplate<String, Object> redisTemplate;
 	
 	private final Cache<String, String> dicCache = CacheBuilder.newBuilder()
-    		.maximumSize(100)
+    		.maximumSize(5000)
             .expireAfterWrite(5, TimeUnit.MINUTES)
             .build();
 	

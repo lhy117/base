@@ -65,11 +65,6 @@ public class AuthorizeFilter extends AuthorizationFilter {
 		if (!subject.isAuthenticated()) {
 			return false;
 		}
-		// 判断请求资源是否授权
-		/*String resource = getPathWithinApplication(request);
-		if (!subject.isPermitted(resource)) {
-			return false;
-		}*/
 		return true;
 	}
 }

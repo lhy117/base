@@ -2,9 +2,9 @@ package com.hl.base.facade.model;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -50,7 +50,7 @@ public class SysUser extends BaseModel<SysUser> {
 	 * 有效期开始(用户)
 	 */
 	@TableField("validtime_start")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	private Date validtimeStart;
 	/**
 	 * 用户有效期（Y:年M:月D:天）
@@ -61,7 +61,7 @@ public class SysUser extends BaseModel<SysUser> {
 	 * 有效期结束(用户)
 	 */
 	@TableField("validtime_end")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@JSONField(format="yyyy-MM-dd HH:mm:ss")
 	private Date validtimeEnd;
 	/**
 	 * 备注

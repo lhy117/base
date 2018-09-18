@@ -2,6 +2,7 @@ package com.hl.base.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,7 +11,11 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.http.converter.HttpMessageConverter;
 
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.alibaba.fastjson.support.config.FastJsonConfig;
+import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -91,5 +96,16 @@ public class BaseWebApplication {
                 //描述
                 .description("API 描述")
                 .build();
+    }
+    
+    @Bean
+    public HttpMessageConverters fastJsonHttpMessageConverters() {
+       FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+       FastJsonConfig fastJsonConfig = new FastJsonConfig();
+       fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+       fastConverter.setFastJsonConfig(fastJsonConfig);
+       HttpMessageConverter<?> converter = fastConverter;
+       return new HttpMessageConverters(converter);
+
     }
 }
