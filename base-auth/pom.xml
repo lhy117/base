@@ -56,6 +56,15 @@
 		    <version>4.0.1</version>
 		    <scope>provided</scope>
 		</dependency>
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

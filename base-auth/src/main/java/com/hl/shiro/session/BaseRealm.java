@@ -2,8 +2,6 @@ package com.hl.shiro.session;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -18,6 +16,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hl.base.facade.constants.GlobalConstant;
 import com.hl.base.facade.model.SysUser;
@@ -31,11 +30,11 @@ import com.hl.base.facade.service.ISysUserService;
  */
 public class BaseRealm extends AuthorizingRealm{
 
-    @Resource
+	@Reference
     private ISysUserService sysUserService;
-    //@Resource
+    //@Reference
     //private SysUserRoleService userRoleService;
-    @Resource
+    @Reference
     private ISysResourcesService sysResourcesService;
 
     /**
@@ -76,6 +75,6 @@ public class BaseRealm extends AuthorizingRealm{
         Session session = currentUser.getSession();
         session.setAttribute(GlobalConstant.USER_ID, user.getId());
         session.setAttribute(GlobalConstant.USER, user);
-        return new SimpleAuthenticationInfo(user.getLoginName(), user.getPassword(), getName());
+        return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
     }
 }

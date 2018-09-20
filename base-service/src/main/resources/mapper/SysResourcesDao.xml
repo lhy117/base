@@ -28,5 +28,12 @@
         id,
         name, code, system_id, parent_id, memo, type, url, level, permission, insert_operator, insert_datetime, last_modify_operator, last_modify_datetime, del_flag, icon, seq
     </sql>
+    
+    <select id="queryPermissions" resultType="string" parameterType="string">
+	    select re.permission from sys_resources re
+		inner join sys_role_resource rr on re.id = rr.resource_id
+		inner join sys_user_role ur on ur.role_id = rr.id
+		where ur.user_id = #{userId}
+    </select>
 
 </mapper>
