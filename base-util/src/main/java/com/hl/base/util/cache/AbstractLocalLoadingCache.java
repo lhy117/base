@@ -1,7 +1,7 @@
 package com.hl.base.util.cache;
  
 import java.util.concurrent.TimeUnit;
- 
+
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -12,11 +12,11 @@ import com.google.common.cache.Weigher;
  * @Author liheyu
  * @date 2018-08-28
  */
-public abstract class LocalLoadingCache<K, V>
+public abstract class AbstractLocalLoadingCache<K, V>
 {
     private LoadingCache<K,V> cache;
  
-    public LocalLoadingCache()
+    public AbstractLocalLoadingCache()
     {
         cache = CacheBuilder.newBuilder()
                 .maximumSize(10000)
@@ -34,7 +34,7 @@ public abstract class LocalLoadingCache<K, V>
      * @param duration
      * @param timeUtil
      */
-    public LocalLoadingCache(long duration, TimeUnit timeUtil, int maxSize)
+    public AbstractLocalLoadingCache(long duration, TimeUnit timeUtil, int maxSize)
     {
         cache = CacheBuilder.newBuilder()
         		.maximumSize(maxSize)
@@ -54,7 +54,7 @@ public abstract class LocalLoadingCache<K, V>
      * 限容缓存：缓存数据个数不能超过maxSize
      * @param maxSize
      */
-    public LocalLoadingCache(long maxSize)
+    public AbstractLocalLoadingCache(long maxSize)
     {
         cache = CacheBuilder.newBuilder()
                 .maximumSize(maxSize)
@@ -72,7 +72,7 @@ public abstract class LocalLoadingCache<K, V>
      * @param maxWeight
      * @param weigher：权重函数类，需要实现计算元素权重的函数
      */
-    public LocalLoadingCache(long maxWeight, Weigher<K, V> weigher)
+    public AbstractLocalLoadingCache(long maxWeight, Weigher<K, V> weigher)
     {
         cache = CacheBuilder.newBuilder()
                 .maximumWeight(maxWeight)

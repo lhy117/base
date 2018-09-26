@@ -17,7 +17,7 @@ public interface ISysResourcesService extends IService<SysResources> {
 
 	/**
 	 * 查询用户资源权限
-	 * @param loginUserId
+	 * @param userId userId
 	 * @return
 	 */
 	List<String> queryPermissions(String userId);

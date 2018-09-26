@@ -12,11 +12,16 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hl.base.facade.model.SysOrg;
 import com.hl.base.facade.service.ISysOrgService;
-import com.hl.base.util.cache.LocalLoadingCache;
+import com.hl.base.util.cache.AbstractLocalLoadingCache;
 import com.hl.base.web.handler.DictExcelHandler;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * base 基础类
+ * @author liheyu
+ * @date 2018-09-26
+ */
 @Slf4j
 public class BaseController {
 
@@ -32,10 +37,10 @@ public class BaseController {
 	@Lazy
 	protected DictExcelHandler dictHandler;
 	
-	protected LocalLoadingCache<String, String> orgCache;
+	protected AbstractLocalLoadingCache<String, String> orgCache;
 	
 	public BaseController() {
-		orgCache = new LocalLoadingCache<String, String>(30, TimeUnit.MINUTES, 100) {
+		orgCache = new AbstractLocalLoadingCache<String, String>(30, TimeUnit.MINUTES, 100) {
 			@Override
 			protected String loadData(String k) {
 				SysOrg org = new SysOrg();

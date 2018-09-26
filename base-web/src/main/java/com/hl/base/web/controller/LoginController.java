@@ -5,7 +5,6 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.session.Session;
-import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +20,8 @@ import com.hl.base.util.model.Result;
 import lombok.extern.slf4j.Slf4j;
 /**
  * 登录控制类
- * @author lhy
- *
+ * @author liheyu
+ * @date 2018-09-26
  */
 @RestController
 @Slf4j

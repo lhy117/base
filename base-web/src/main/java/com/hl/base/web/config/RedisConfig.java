@@ -13,6 +13,11 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * redis配置类
+ * @author liheyu
+ * @date 2018-09-26
+ */
 @Configuration
 public class RedisConfig {
 

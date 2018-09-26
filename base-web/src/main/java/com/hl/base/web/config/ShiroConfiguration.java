@@ -28,7 +28,11 @@ import com.hl.auth.filter.AuthorizeFilter;
 import com.hl.auth.filter.KickoutSessionControlFilter;
 import com.hl.auth.session.BaseRealm;
 
-
+/**
+ * shiro配置类
+ * @author liheyu
+ * @date 2018-09-26
+ */
 @Configuration
 public class ShiroConfiguration{
 	

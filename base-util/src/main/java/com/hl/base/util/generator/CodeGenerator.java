@@ -10,10 +10,10 @@ import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.hl.base.util.generator.config.ContextConfig;
-import com.hl.base.util.generator.template.BaseTemplateEnginem;
+import com.hl.base.util.generator.template.BaseTemplateEngine;
 
 /**
-  * 代码生成
+ * 代码生成
  * @author lhy
  * @date 2018-08-02 16:15:22
  */
@@ -39,7 +39,7 @@ public class CodeGenerator {
         autoGenerator.setDataSource(dataSourceConfig);
         autoGenerator.setStrategy(strategyConfig);
         autoGenerator.setPackageInfo(packageConfig);
-        autoGenerator.setTemplateEngine(new BaseTemplateEnginem(config));
+        autoGenerator.setTemplateEngine(new BaseTemplateEngine(config));
         autoGenerator.setTemplate(templateConfig);
         autoGenerator.execute();
 	}
@@ -52,7 +52,8 @@ public class CodeGenerator {
         dataSourceConfig.setPassword(config.getDbPassword());
         dataSourceConfig.setUrl(config.getDbUrl());
         //全局参数
-		globalConfig.setOutputDir(config.getOutputFilePath());//写自己项目的绝对路径,注意具体到java目录
+        //写自己项目的绝对路径,注意具体到java目录
+		globalConfig.setOutputDir(config.getOutputFilePath());
         globalConfig.setFileOverride(true);
         globalConfig.setEnableCache(false);
         globalConfig.setBaseResultMap(true);
@@ -63,7 +64,8 @@ public class CodeGenerator {
         globalConfig.setMapperName("%sDao");
         globalConfig.setXmlName("%sDao");
         //生成策略
-        strategyConfig.setTablePrefix(config.getTablePrefix());// 此处可以修改为您的表前缀
+        //此处可以修改为您的表前缀
+        strategyConfig.setTablePrefix(config.getTablePrefix());
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setSuperEntityClass(config.getSuperEntity());
         strategyConfig.setRestControllerStyle(true);

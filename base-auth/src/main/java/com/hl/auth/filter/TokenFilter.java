@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.Assert;
 
 import com.alibaba.fastjson.JSON;
-import com.hl.auth.jwt.JWTGenerator;
+import com.hl.auth.jwt.JwtGenerator;
 import com.hl.base.util.model.Result;
 
 /**
@@ -38,7 +38,7 @@ public class TokenFilter extends AccessControlFilter {
 		String token = getSign(req);
 		Result<String> result = new Result<>();
         //jwt的验证方式
-        switch (JWTGenerator.getState(token, secret)) {
+        switch (JwtGenerator.getState(token, secret)) {
             case VALID:
                 return true;
             case EXPIRED:

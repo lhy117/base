@@ -11,13 +11,13 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * 通用-功能资源表 Mapper 接口
  * </p>
  * @author liheyu
- * @date 2018-8-1 14:44:10
+ * @date 2018-08-01
  */
 public interface SysResourcesDao extends BaseMapper<SysResources> {
 
 	/**
 	 * 查询当前用户资源权限
-	 * @param loginUserId
+	 * @param userId userId
 	 * @return
 	 */
 	List<String> queryPermissions(String userId);

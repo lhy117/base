@@ -22,6 +22,11 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * web app入口类
+ * @author liheyu
+ * @date 2018-09-26
+ */
 @SpringBootApplication
 @ComponentScan(basePackages= {"com.hl.base.web"})
 @PropertySource("classpath:application.properties")
@@ -29,7 +34,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class BaseWebApplication {
 
+	/**
+	 * 入口main函数
+	 * @param args
+	 */
 	public static void main(String[] args) {
+		//禁用springboot devtolls的热部署 以免造成实体类强制转换异常
 		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(BaseWebApplication.class, args);
 	}
@@ -48,7 +58,10 @@ public class BaseWebApplication {
                 .paths(PathSelectors.any())
                 .build();
     }
-    //构建 api文档的详细信息函数,注意这里的注解引用的是哪个
+    /**
+     * api文档的详细信息函数
+     * @return
+     */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 //页面标题

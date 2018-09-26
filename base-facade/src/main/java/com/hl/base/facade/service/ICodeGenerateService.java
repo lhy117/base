@@ -2,6 +2,11 @@ package com.hl.base.facade.service;
 
 import java.util.List;
 
+/**
+ * 代码生成接口类
+ * @author liheyu
+ * @date 2018-09-26
+ */
 public interface ICodeGenerateService {
 	
 	/**

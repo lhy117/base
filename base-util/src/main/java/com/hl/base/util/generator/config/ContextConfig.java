@@ -47,7 +47,7 @@ public class ContextConfig implements Serializable{
 	@NonNull
 	private String author;
 	/** 作者 */
-	private String[] TablePrefix;
+	private String[] tablePrefix;
 	/** controller包的路径  */
 	private Boolean controllerSwitch = true;
 	/** controller包的路径  */

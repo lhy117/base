@@ -7,13 +7,17 @@ import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.hl.base.util.generator.config.ContextConfig;
 
-public class BaseTemplateEnginem extends FreemarkerTemplateEngine {
+import lombok.AllArgsConstructor;
+
+/**
+ * 基础模板引擎
+ * @author liheyu
+ * @date 2018-09-26
+ */
+@AllArgsConstructor
+public class BaseTemplateEngine extends FreemarkerTemplateEngine {
 
 	private ContextConfig config;
-	
-	public BaseTemplateEnginem(ContextConfig config) {
-		this.config = config;
-	};
 	
 	@Override
 	public AbstractTemplateEngine batchOutput() {

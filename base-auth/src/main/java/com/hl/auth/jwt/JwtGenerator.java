@@ -17,7 +17,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
  * @author lhy
  * @date 2018-06-05
  */
-public class JWTGenerator {
+public class JwtGenerator {
 	// Sample method to construct a JWT
 	/**
 	 * 创建jwt的key
