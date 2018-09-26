@@ -19,7 +19,7 @@ import lombok.ToString;
  * @since 2018-07-26
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @NoArgsConstructor
 @TableName("sys_user")
@@ -67,4 +67,5 @@ public class SysUser extends BaseModel<SysUser> {
 	 * 备注
 	 */
 	private String remark;
+	
 }

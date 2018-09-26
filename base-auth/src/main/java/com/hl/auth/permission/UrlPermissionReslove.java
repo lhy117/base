@@ -9,7 +9,7 @@
  * @date: 2018年7月11日 上午11:33:51 
  * @version: V1.0   
  */
-package com.hl.shiro.permission;
+package com.hl.auth.permission;
 
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.permission.PermissionResolver;

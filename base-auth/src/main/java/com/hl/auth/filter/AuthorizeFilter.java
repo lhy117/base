@@ -1,4 +1,4 @@
-package com.hl.shiro.filter;
+package com.hl.auth.filter;
 
 import java.io.IOException;
 import java.io.Writer;

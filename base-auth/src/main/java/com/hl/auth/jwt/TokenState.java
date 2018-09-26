@@ -1,4 +1,4 @@
-package com.hl.shiro.jwt;
+package com.hl.auth.jwt;
 
 /**
  * 枚举，定义token的三种状态

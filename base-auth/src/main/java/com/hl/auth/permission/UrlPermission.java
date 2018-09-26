@@ -1,4 +1,4 @@
-package com.hl.shiro.permission;
+package com.hl.auth.permission;
 
 import java.io.Serializable;
 

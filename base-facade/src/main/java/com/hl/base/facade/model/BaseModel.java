@@ -10,7 +10,6 @@ import com.baomidou.mybatisplus.annotations.TableId;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 /**
  * <p>
@@ -20,9 +19,8 @@ import lombok.ToString;
  * @date 2018-07-26 
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ToString(callSuper = false)
-public class BaseModel<T extends Model<?>> extends Model<T> {
+@EqualsAndHashCode(callSuper = true)
+public class BaseModel<T extends Model<T>> extends Model<T>{
 
     private static final long serialVersionUID = 1L;
 
@@ -62,5 +60,4 @@ public class BaseModel<T extends Model<?>> extends Model<T> {
     protected Serializable pkVal() {
         return this.id;
     }
-
 }

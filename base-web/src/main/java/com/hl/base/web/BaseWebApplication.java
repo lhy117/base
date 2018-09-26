@@ -30,9 +30,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class BaseWebApplication {
 
 	public static void main(String[] args) {
+		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(BaseWebApplication.class, args);
 	}
 	
+	/**
+	 * swagger 配置信息
+	 * @return
+	 */
 	@Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -57,6 +62,10 @@ public class BaseWebApplication {
                 .build();
     }
     
+    /**
+     * fastjson替代默认的jackson处理返回的数据
+     * @return
+     */
     @Bean
     public HttpMessageConverters fastJsonHttpMessageConverters() {
        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
@@ -65,6 +74,5 @@ public class BaseWebApplication {
        fastConverter.setFastJsonConfig(fastJsonConfig);
        HttpMessageConverter<?> converter = fastConverter;
        return new HttpMessageConverters(converter);
-
     }
 }

@@ -22,16 +22,14 @@ import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
-import com.hl.shiro.filter.AuthorizeFilter;
-import com.hl.shiro.filter.KickoutSessionControlFilter;
-import com.hl.shiro.session.BaseRealm;
+import com.hl.auth.filter.AuthorizeFilter;
+import com.hl.auth.filter.KickoutSessionControlFilter;
+import com.hl.auth.session.BaseRealm;
 
 
 @Configuration
-@Order(2)
 public class ShiroConfiguration{
 	
     /**
@@ -41,7 +39,7 @@ public class ShiroConfiguration{
     @Bean
     public RedisSessionDAO redisSessionDAO(RedisManager redisManager) {
         RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
-        redisSessionDAO.setExpire(86400);
+        //redisSessionDAO.setExpire(21600);
         redisSessionDAO.setRedisManager(redisManager);
         redisSessionDAO.setKeyPrefix("oms:session:");
         return redisSessionDAO;
@@ -97,10 +95,10 @@ public class ShiroConfiguration{
     public BaseRealm baseRealm(RedisCacheManager cacheManager) {
     	BaseRealm realm = new BaseRealm();
     	realm.setCachingEnabled(true);
-    	realm.setAuthorizationCachingEnabled(true);
-    	realm.setCacheManager(cacheManager);
+    	realm.setAuthenticationCachingEnabled(true);
     	realm.setAuthenticationCacheName("authenticationCache");
     	realm.setCredentialsMatcher(credentialsMatcher());
+    	realm.setCacheManager(cacheManager);
         return realm;
     }
 
@@ -210,7 +208,7 @@ public class ShiroConfiguration{
     
     @Bean
     public FilterRegistrationBean<DelegatingFilterProxy> delegatingFilterProxy(){
-        FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean = new FilterRegistrationBean();
+        FilterRegistrationBean<DelegatingFilterProxy> filterRegistrationBean = new FilterRegistrationBean<DelegatingFilterProxy>();
         DelegatingFilterProxy proxy = new DelegatingFilterProxy();
         proxy.setTargetFilterLifecycle(true);
         proxy.setTargetBeanName("shiroFilter");

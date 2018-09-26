@@ -1,4 +1,4 @@
-package com.hl.shiro.session;
+package com.hl.auth.session;
 
 import java.util.List;
 
@@ -75,6 +75,6 @@ public class BaseRealm extends AuthorizingRealm{
         Session session = currentUser.getSession();
         session.setAttribute(GlobalConstant.USER_ID, user.getId());
         session.setAttribute(GlobalConstant.USER, user);
-        return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
+        return new SimpleAuthenticationInfo(token.getUsername(), user.getPassword(), getName());
     }
 }

@@ -1,4 +1,4 @@
-package com.hl.shiro.session;
+package com.hl.auth.session;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -6,6 +6,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
+import com.alibaba.fastjson.JSON;
 import com.hl.base.facade.constants.GlobalConstant;
 import com.hl.base.facade.model.SysOrg;
 import com.hl.base.facade.model.SysUser;
@@ -36,7 +37,8 @@ public class SessionUtils {
 		Subject subject = SecurityUtils.getSubject();
 		if (subject.isAuthenticated()) {
 			Session session = subject.getSession();
-			SysUser user = (SysUser) session.getAttribute(GlobalConstant.USER);
+			SysUser user = JSON.parseObject(JSON.toJSONString(session.getAttribute(GlobalConstant.USER)), SysUser.class);
+			//SysUser user = (SysUser) session.getAttribute(GlobalConstant.USER);
 			return user == null ? new SysUser() : user;
 		}
 		return null;

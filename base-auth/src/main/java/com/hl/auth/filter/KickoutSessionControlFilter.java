@@ -1,9 +1,4 @@
-/*
- * Copyright (c) 2018, Healthlink All Rights Reserved.
- *
- */
-
-package com.hl.shiro.filter;
+package com.hl.auth.filter;
 
 import java.io.Serializable;
 import java.io.Writer;
@@ -26,9 +21,7 @@ import org.apache.shiro.web.filter.AccessControlFilter;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
-import com.hl.base.facade.model.SysUser;
 import com.hl.base.util.model.Result;
-import com.hl.shiro.session.SessionUtils;
 
 import lombok.Setter;
 
@@ -53,6 +46,8 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
 	 */
 	@Setter
 	private boolean kickoutAfter = false; 
+	
+	private static final String KICKOUT_KEY= "kickout";
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
@@ -67,18 +62,18 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
         	return true;
         }
         Session session = subject.getSession();
-        SysUser user =  SessionUtils.getLoginUser();
+        String loginName =  (String) subject.getPrincipal();
         Serializable sessionId = session.getId();
 
-        Cache<String , Deque<Serializable>> kickCache = cacheManager.getCache("kickCache");
-        Deque<Serializable> deque = kickCache.get(user.getLoginName());  
+        Cache<String , Deque<Serializable>> kickCache = cacheManager.getCache(KICKOUT_KEY);
+        Deque<Serializable> deque = kickCache.get(loginName);  
         if(deque == null) {  
             deque = Lists.newLinkedList(); 
             deque.push(sessionId);
-            kickCache.put(user.getLoginName(), deque);
+            //kickCache.put(loginName, deque);
         }  
       //如果队列里没有此sessionId，且用户没有被踢出；放入队列  
-        if(!deque.contains(sessionId) && session.getAttribute("kickout") == null) {  
+        if(!deque.contains(sessionId) && session.getAttribute(KICKOUT_KEY) == null) {  
             deque.push(sessionId);  
         }
         //如果队列里的sessionId数超出最大会话数，开始踢人  
@@ -95,13 +90,14 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
                     sessionManager.getSession(new DefaultSessionKey(kickoutSessionId));  
                 if(kickoutSession != null) {  
                     //设置会话的kickout属性表示踢出了  
-                    kickoutSession.setAttribute("kickout", true);  
+                    kickoutSession.setAttribute(KICKOUT_KEY, true);  
                 }  
             } catch (Exception e) {//ignore exception  
             }  
         }  
+        kickCache.put(loginName, deque);
         Result<String> result = new Result<>();
-        if (session.getAttribute("kickout") != null) {
+        if (session.getAttribute(KICKOUT_KEY) != null) {
             //会话被踢出了
             subject.logout();
             result.setCode(HttpStatus.SC_NOT_ACCEPTABLE);
@@ -117,12 +113,4 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
         }
         return true;
     }
-    
-    public static void main(String[] args) {
-    	SysUser user = new SysUser();
-		user.setId("111");
-		Object d = user;
-		SysUser s = (SysUser) d;
-		System.out.println(s.toString());
-	}
 }

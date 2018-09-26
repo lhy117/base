@@ -1,4 +1,4 @@
-package com.hl.shiro.consts;
+package com.hl.auth.consts;
 
 /**
  * shiro常量类

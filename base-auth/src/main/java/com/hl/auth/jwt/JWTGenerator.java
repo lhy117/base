@@ -1,4 +1,4 @@
-package com.hl.shiro.jwt;
+package com.hl.auth.jwt;
 
 import java.security.Key;
 import java.util.Date;

@@ -1,12 +1,12 @@
-package com.hl.shiro.redis;
+package com.hl.auth.redis;
 
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
 import org.crazycake.shiro.IRedisManager;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import lombok.Setter;
 
 /**
  * 自定义的shiro redis client
@@ -15,7 +15,7 @@ import org.springframework.data.redis.core.RedisTemplate;
  */
 public class RedisClient implements IRedisManager{
 
-	@Resource
+	@Setter
 	private RedisTemplate<byte[], byte[]> redis;
 	
 	@Override
@@ -36,12 +36,14 @@ public class RedisClient implements IRedisManager{
 	}
 
 	@Override
-	public Long dbSize(byte[] pattern) {
-		return new Long(keys(pattern).size());
-	}
-
-	@Override
 	public Set<byte[]> keys(byte[] pattern) {
 		return redis.keys(pattern);
 	}
+
+	@Override
+	public Long dbSize() {
+		return new Long(keys("".getBytes()).size());
+	}
+	
+	
 }

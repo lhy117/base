@@ -1,4 +1,4 @@
-package com.hl.shiro.filter;
+package com.hl.auth.filter;
 
 import java.io.IOException;
 
@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.Assert;
 
 import com.alibaba.fastjson.JSON;
+import com.hl.auth.jwt.JWTGenerator;
 import com.hl.base.util.model.Result;
-import com.hl.shiro.jwt.JWTGenerator;
 
 /**
  * 基于HMAC（ 散列消息认证码）的无状态认证过滤器
- * @author wangjie (http://www.jianshu.com/u/ffa3cba4c604)
+ * @author liheyu
  * @date 2016年6月24日 下午2:55:15
  */
 public class TokenFilter extends AccessControlFilter {
